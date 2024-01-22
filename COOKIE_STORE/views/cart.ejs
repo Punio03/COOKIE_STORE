@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title> cookie store </title>
+</head>
+<body>
+    <div class="cart">
+        <% let sum = 0 %>
+        <% let set = [] %>
+        <% for(const item of products){ %>
+            <% if(!set.includes(item.ID)){ %>
+                <% let count = 0 %>
+                <% set.push(item.ID) %>
+                <% products.forEach(elem => { %>
+                    <% if(elem.ID === item.ID){ %>
+                    <%    count++ %>
+                    <% } %>
+                <% }) %>
+                <div>
+                    <a class="username"><%= item.NAME %> x <%= count%></a>
+                    <a class="username"><%= (+item.PRICE)*(count) %>$</a>
+                </div>
+                <% sum += (+item.PRICE)*count %>
+            <% } %>
+        <% } %>
+        <a class="username">sum is <%= sum %></a>
+        <form method="get" action="https://localhost:1024/">
+            <button class="logo">
+              go back
+            </button>
+        </form>
+    </div>
+</body>
+</html>
